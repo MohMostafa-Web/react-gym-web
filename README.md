@@ -5,7 +5,7 @@ For more, Go to [React Horizontal Scrolling Menu GitHub](https://github.com/asmy
 
 # Loader Spinner
 
-We used "`react-loader-spinner`" Package to create reate a `Infinity Spin` Loader.\
+We used `react-loader-spinner` Package to create reate a `Infinity Spin` Loader.\
 For more, Go to [React Spinners Website](https://mhnpd.github.io/react-loader-spinner/docs/intro)
 
 # Getting Started with Create React App
