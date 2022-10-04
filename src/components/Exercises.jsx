@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Box, Pagination, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Pagination,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { fetchExercisesData } from "../fetchData";
 import ExerciseCard from "./ExerciseCard";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -16,6 +22,9 @@ const Exercises = ({ exercises, setExercises, selectedBodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const numExsPerPage = 10; // Number of Exercises per Page
   const firstIndexInPage = numExsPerPage * (currentPage - 1); // 0, 10, 20, ..
+
+  /* using "useMediaQuery()" from MUI to control number of visible pages */
+  const isAboveSmallScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
   /* using useEffect to get the selected exercises according to the selected body part */
   useEffect(() => {
@@ -99,6 +108,7 @@ const Exercises = ({ exercises, setExercises, selectedBodyPart }) => {
               page={currentPage}
               onChange={handlePageChange}
               color="primary"
+              siblingCount={isAboveSmallScreen}
             />
           )}
         </ThemeProvider>
