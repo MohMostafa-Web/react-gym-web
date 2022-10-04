@@ -125,7 +125,7 @@
   display: none;
 }
 .react-horizontal-scrolling-menu--inner-wrapper {
-  display: block;
+  display: block !important;
   width: 100%;
 }
 .react-horizontal-scrolling-menu--scroll-container {
