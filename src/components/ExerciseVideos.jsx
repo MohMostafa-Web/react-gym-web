@@ -43,14 +43,23 @@ const ExerciseVideos = ({ name }) => {
       <Stack
         direction="row"
         flexWrap="wrap"
+        justifyContent="center"
         alignItems="center"
-        gap="80px"
+        gap={{ xs: "50px", md: "80px" }}
         mt="30px"
       >
         {videos.length ? (
           videos?.slice(0, 6).map((item) => {
             const {
-              video: { channelName, title, thumbnails, videoId },
+              video: {
+                channelName,
+                title,
+                thumbnails,
+                videoId,
+                lengthText,
+                viewCountText,
+                publishedTimeText,
+              },
             } = item;
             return (
               // Exercise Video
@@ -62,24 +71,44 @@ const ExerciseVideos = ({ name }) => {
               >
                 <Box
                   sx={{
-                    width: { xs: "290px", md: "380px" },
-                    height: "202px",
-                    borderRadius: "15px 0 0 0",
-                    overflow: "hidden",
+                    position: "relative",
                   }}
                 >
                   <img
                     src={thumbnails[0].url}
                     alt={title}
                     loading="lazy"
-                    style={{ width: "100%" }}
+                    style={{
+                      display: "flex",
+                      maxWidth: "100%",
+                      width: "360px",
+                      height: "202px",
+                      borderRadius: "15px 0 0 0",
+                    }}
                   />
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      backgroundColor: "#000",
+                      color: "#fff",
+                      padding: "0 4px",
+                      borderRadius: "4px",
+                      position: "absolute",
+                      bottom: "5px",
+                      right: "5px",
+                    }}
+                  >
+                    {lengthText}
+                  </Typography>
                 </Box>
-                <Typography fontSize={22} fontWeight={700} mt={2} title={title}>
-                  {title.length > 23 ? `${title.slice(0, 23)}..` : title}
+                <Typography fontSize={20} fontWeight={700} mt={2} title={title}>
+                  {title.length > 30 ? `${title.slice(0, 30)}..` : title}
+                </Typography>
+                <Typography fontSize={16} fontWeight={300} color="#777" mt="8px" title={channelName}>
+                  {channelName.length > 35 ? `${channelName.slice(0, 35)}..` : channelName}
                 </Typography>
                 <Typography fontSize={14} fontWeight={300} color="#777">
-                  {channelName}
+                  {viewCountText} • {publishedTimeText}
                 </Typography>
               </a>
             );
